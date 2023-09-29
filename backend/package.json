@@ -1,0 +1,19 @@
+{
+  "name": "tariff-comparison",
+  "version": "1.0.0",
+  "description": "The project comprises a Node.js backend and Angular frontend for a Tariff Comparison application, facilitating the calculation and display of electricity tariffs based on user consumption.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  }
+}
