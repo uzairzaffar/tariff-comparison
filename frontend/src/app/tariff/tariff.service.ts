@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TariffService {
-  private baseUrl = 'http://localhost:3000'; // Replace with your backend API URL
+  private baseUrl = 'http://localhost:3000/api'; // Replace with your backend API URL
 
   constructor(private http: HttpClient) {}
 

@@ -17,8 +17,12 @@ const tariffs = [
   // Add more tariff data here
 ];
 
+app.get('/api/tariffs', (req, res) => {
+  res.json(tariffs);
+});
+
 // Calculate tariffs based on user input
-app.post('/calculate-tariffs', (req, res) => {
+app.post('/api/calculate-tariffs', (req, res) => {
     try {
       const { consumption } = req.body;
   
