@@ -19,8 +19,7 @@ docker-compose up --build -d
 
 This will start the development server at http://localhost:8080/ Open your web browser and navigate to this address to view the application.
 
-## Running Unit Tests
-We have included unit tests in this project. To run the tests, use:
+- To stop the development server, use the following command:
 ```bash
-npm run test
+docker-compose down
 ```
