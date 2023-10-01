@@ -1,30 +1,23 @@
-# Use an official Node.js runtime as a parent image
-FROM node:18 as build
+# ----------------------------
+# build from source
+# ----------------------------
+FROM node:18 AS build
 
-# Set the working directory
-WORKDIR /usr/src/app
+WORKDIR /app/frontend
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
-
-# Install application dependencies
+COPY package*.json .
 RUN npm install
 
-# Copy the rest of the application code
 COPY . .
-
-# Build the Angular application
 RUN npm run build
 
-# Use a lightweight Nginx image to serve the Angular app
-FROM nginx:alpine
+# ----------------------------
+# run with nginx
+# ----------------------------
+FROM nginx
 
-# Copy the built Angular app to the Nginx server directory
-COPY --from=build /usr/src/app/dist /usr/share/nginx/html
-COPY ./nginx.conf /etc/nginx/conf.d/default.confg
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d
+COPY --from=build /app/frontend/dist /usr/share/nginx/html
 
-# Expose the port Nginx listens on
 EXPOSE 80
-
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
